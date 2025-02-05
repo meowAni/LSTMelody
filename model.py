@@ -2,23 +2,29 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-min_pitch = 21
-max_pitch = 108
+min_drum_pitch = 35
+max_drum_pitch = 81
+n_drum_pitches = max_drum_pitch - min_drum_pitch + 1
+
+min_pitch = 0
+max_pitch = 127
 n_pitches = max_pitch - min_pitch + 1
+
 sequence_length = 128
 n_velocities = 128
+n_instruments = 4
 
 class MusicGen(nn.Module):
   def __init__(self):
     super(MusicGen, self).__init__()
-    self.lstm = nn.LSTM(input_size=4, hidden_size=128, batch_first=True)
+    self.lstm = nn.LSTM(input_size=5, hidden_size=512, batch_first=True)
 
-    self.pitch_layer = nn.Linear(128, n_pitches)
-    self.velocity_layer = nn.Linear(128, n_velocities)
-    self.step_layer = nn.Linear(128, 1)
-    self.duration_layer = nn.Linear(128, 1)
-
-    self.relu = nn.ReLU()
+    self.regular_pitch_head = nn.Linear(512, n_pitches)
+    self.drum_pitch_head = nn.Linear(512, n_drum_pitches)
+    self.velocity_head = nn.Linear(512, n_velocities)
+    self.step_head = nn.Linear(512, 1)
+    self.duration_head = nn.Linear(512, 1)
+    self.instrument_head = nn.Linear(512, n_instruments)
   
   def forward(self, x, hidden=None):
     # x : (batch_size, sequence_length, 4 ) tensor
@@ -28,16 +34,20 @@ class MusicGen(nn.Module):
     # x : (batch_size, 128) tensor
     x_last = x[:, -1, :]
     
-    pitch = self.pitch_layer(x_last)
+    # predict instrument
+    drum_pitch_logits = self.drum_pitch_head(x_last)
+    regular_pitch_logits = self.regular_pitch_head(x_last)
+    velocity_logits = self.velocity_head(x_last)
+    step = self.step_head(x_last)
+    duration = self.duration_head(x_last)
+    instrument_logits = self.instrument_head(x_last)
     
-    velocity = self.velocity_layer(x_last)
-
-    step = self.step_layer(x_last)
-    step = self.relu(step)
-
-    duration = self.duration_layer(x_last)
-    duration = self.relu(duration)
-    
-    # out : (batch_size , n_pitches + n_velocities + 1 + 1) tensor
-    out = torch.cat([pitch, velocity, duration, step], dim=-1)
-    return out, hidden
+    # out : (batch_size , ...) tensor
+    return {
+      "instrument": instrument_logits,
+      "drum_pitch": drum_pitch_logits,
+      "regular_pitch": regular_pitch_logits,
+      "velocity": velocity_logits,
+      "step": step,
+      "duration": duration
+    }, hidden
