@@ -1,0 +1,18 @@
+# Ignore the large MIDI datasets and preprocessed data
+data/
+
+# Ignore the directory containing generated music
+generated/
+
+# Ignore the trained model weights
+trained_weights/
+
+# Ignore the cache
+__pycache__/
+.ipynb_checkpoints/
+
+# Ignore the personal files
+todo.txt
+
+# Ignore the temporary files for testing and debugging
+experiments/
