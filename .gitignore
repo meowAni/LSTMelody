@@ -11,8 +11,5 @@ trained_weights/
 __pycache__/
 .ipynb_checkpoints/
 
-# Ignore the personal files
-todo.txt
-
 # Ignore the temporary files for testing and debugging
 experiments/

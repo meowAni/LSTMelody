@@ -15,7 +15,7 @@ n_velocities = 128
 n_instruments = 4
 
 class MusicGen(nn.Module):
-  def __init__(self):
+  def __init__(self, meta):
     super(MusicGen, self).__init__()
     self.lstm = nn.LSTM(input_size=5, hidden_size=512, batch_first=True)
 
@@ -25,10 +25,13 @@ class MusicGen(nn.Module):
     self.step_head = nn.Linear(512, 1)
     self.duration_head = nn.Linear(512, 1)
     self.instrument_head = nn.Linear(512, n_instruments)
+    self.meta = meta
   
   def forward(self, x, hidden=None):
     # x : (batch_size, sequence_length, 4 ) tensor
     # lstm_out : (batch_size, sequence_length, 128) tensor
+    x[:, :, 2] = (x[:, :, 2] - self.meta['mean_duration']) / self.meta['std_duration']
+    x[:, :, 3] = (x[:, :, 3] - self.meta['mean_step']) / self.meta['std_step']  
     x, hidden = self.lstm(x, hidden)
     # Give last layer of lstm_out for the 3 fully connected layer
     # x : (batch_size, 128) tensor
@@ -38,8 +41,8 @@ class MusicGen(nn.Module):
     drum_pitch_logits = self.drum_pitch_head(x_last)
     regular_pitch_logits = self.regular_pitch_head(x_last)
     velocity_logits = self.velocity_head(x_last)
-    step = self.step_head(x_last)
-    duration = self.duration_head(x_last)
+    step = self.step_head(x_last) * self.meta['std_step'] + self.meta['mean_step']
+    duration = self.duration_head(x_last) * self.meta['std_duration'] + self.meta['mean_duration']
     instrument_logits = self.instrument_head(x_last)
     
     # out : (batch_size , ...) tensor
