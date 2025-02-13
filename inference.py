@@ -3,7 +3,6 @@ import torch.nn.functional as F
 import numpy as np
 from tqdm.auto import tqdm
 import pretty_midi
-import sys
 
 min_drum_pitch = 35
 max_drum_pitch = 81
