@@ -1,6 +1,7 @@
 # Ignore the cache
 __pycache__/
 .ipynb_checkpoints/
+backend/__pycache__
 
 # Ignore the large MIDI datasets and preprocessed data
 ai-pipeline/data/
