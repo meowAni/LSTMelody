@@ -1,11 +1,11 @@
 {
   "preprocessing": {
-    "n_files": 100,
-    "chunk_size": 20,
+    "n_files": 1000,
+    "shard_size": 200,
     "raw_data_path": "data\\raw\\LMD-clean",
     "processed_data_path": "data\\processed\\",
-    "samples_per_file": 100,
-    "n_workers": 2
+    "samples_per_file": 50,
+    "n_workers": 6
   },
   "design": {
     "sequence_length": 128
