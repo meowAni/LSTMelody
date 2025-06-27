@@ -1,0 +1,58 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Optional: prevents scrollbars if you don’t want them */
+}
+
+.page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  padding: 8px;
+  gap: 8px;
+  background-color: black;
+}
+
+.side-bar {
+  flex: 1 1 40px;
+  padding: 0px 24px 0px 24px;
+  background-color: rgba(var(--mdui-color-surface-container-low-dark), 1); /* add opacity */
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column; 
+}
+
+
+.gallery {
+  flex: 1 1 60%;
+  display: flex;
+  flex-wrap: wrap;
+
+  /* Remove height: 100% to avoid conflict with max-height */
+  max-height: calc(100vh - 16px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background-color: rgba(var(--mdui-color-surface-container-lowest-dark));
+  background-image: radial-gradient(rgba(var(--mdui-color-surface-container-low-dark)) 2px, transparent 2px);
+  background-size: 15px 15px;
+
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+
+  border-radius: 24px;
+}

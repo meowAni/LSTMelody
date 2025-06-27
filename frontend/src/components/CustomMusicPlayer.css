@@ -1,0 +1,38 @@
+.music-player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 8px;
+  margin: 0 16px 8px 16px;
+}
+
+.progress-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #757575;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.time-display {
+  font-size: 12px;
+  min-width: 60px;
+  text-align: right;
+}

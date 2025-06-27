@@ -1,0 +1,45 @@
+.music-box {
+  width: 360px;
+  border-radius: 40px;
+  border: 0;
+  margin: 12px;
+  background-color: rgba(var(--mdui-color-surface-container-dark))
+}
+
+.preview {
+  width: 100%;
+  border-radius: 40px;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 8px;
+  background-color: #797979;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+.progress {
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.downloadButton {
+  color: rgba(var(--mdui-color-tertiary-dark));
+  background-color: rgba(var(--mdui-color-on-tertiary-dark));
+}
+
+.deleteButton {
+  color: rgba(var(--mdui-color-error-dark));
+  background-color: rgba(var(--mdui-color-on-error-dark));
+}

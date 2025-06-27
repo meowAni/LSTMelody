@@ -1,15 +1,18 @@
-# Ignore the large MIDI datasets and preprocessed data
-data/
-
-# Ignore the directory containing generated music
-generated/
-
-# Ignore the trained model weights
-trained_weights/
-
 # Ignore the cache
 __pycache__/
 .ipynb_checkpoints/
 
-# Ignore the temporary files for testing and debugging
-experiments/
+# Ignore the large MIDI datasets and preprocessed data
+ai-pipeline/data/
+
+# Ignore the directory containing generated music
+ai-pipeline/generated/
+
+# Ignore the trained model weights
+ai-pipeline/model_weights.pth
+
+# Ignore the seed starting sequences
+ai-pipeline/seeds.pth
+
+# Ignore the frontend boilerplate and build specific code
+frontend/node_modules/
