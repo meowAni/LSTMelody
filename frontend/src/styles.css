@@ -1,58 +1,408 @@
+/* Reset & Base */
+html {
+    box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto', sans-serif !important;
+    box-sizing: inherit;
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden; /* Optional: prevents scrollbars if you don’t want them */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: black;
+}
+
+/* Layout */
 .page {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  padding: 8px;
-  gap: 8px;
-  background-color: black;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    padding: 2px;
+    gap: 5px;
+    background-color: black;
 }
 
+/* Sidebar */
 .side-bar {
-  flex: 1 1 40px;
-  padding: 0px 24px 0px 24px;
-  background-color: rgba(var(--mdui-color-surface-container-low-dark), 1); /* add opacity */
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column; 
+    height: 100%;
+    flex: 0 0 min(100%, 300px);
+    padding: 0px 20px 20px 20px;
+    background-color: rgba(var(--mdui-color-surface-container-low-dark), 1);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 4px);
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 0.8;
 }
 
+.side-bar h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
 
+.side-bar button {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 12px;
+}
+
+.sidebar-content,
+.sidebar-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gallery */
 .gallery {
-  flex: 1 1 60%;
-  display: flex;
-  flex-wrap: wrap;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(var(--mdui-color-surface-container-lowest-dark));
+    background-image: radial-gradient(
+        rgba(var(--mdui-color-surface-container-low-dark)) 2px,
+        transparent 2px
+    );
+    background-size: 15px 15px;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    border-radius: 24px;
+    padding: 8px;
+    direction: rtl;
+}
 
-  /* Remove height: 100% to avoid conflict with max-height */
-  max-height: calc(100vh - 16px);
+.gallery > * {
+    direction: ltr;
+}
 
-  overflow-y: auto;
-  overflow-x: hidden;
+/* Scrollbars */
+html::-webkit-scrollbar {
+    width: 12px;
+}
+html::-webkit-scrollbar-track {
+    background: #000000;
+}
+html::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
+}
+html::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
 
-  background-color: rgba(var(--mdui-color-surface-container-lowest-dark));
-  background-image: radial-gradient(rgba(var(--mdui-color-surface-container-low-dark)) 2px, transparent 2px);
-  background-size: 15px 15px;
+.gallery::-webkit-scrollbar {
+    width: 8px;
+}
+.gallery::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+.gallery::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+.gallery::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
 
-  align-items: flex-start;
-  align-content: flex-start;
-  justify-content: flex-start;
+/* Music Box */
+.music-box {
+    width: min(100%, 360px);
+    border-radius: 40px;
+    border: 0;
+    margin: 12px;
+    background-color: rgba(var(--mdui-color-surface-container-dark));
+}
 
-  border-radius: 24px;
+.preview {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 40px;
+    margin-bottom: 8px;
+}
+
+/* Progress Bar */
+.progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    background-color: #797979;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+/* Buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.downloadButton {
+    color: rgba(var(--mdui-color-tertiary-dark));
+    background-color: rgba(var(--mdui-color-on-tertiary-dark));
+}
+
+.deleteButton {
+    color: rgba(var(--mdui-color-error-dark));
+    background-color: rgba(var(--mdui-color-on-error-dark));
+}
+
+/* Header */
+.header {
+   .header {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: clamp(28px, 5vw, 50px) !important;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+
+    /* Gradient text */
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+}
+
+/* Controls */
+h4 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0;
+}
+
+.duration-box {
+    margin-bottom: 30px;
+    flex-shrink: 0;
+}
+
+.duration-slider {
+    margin-bottom: 20px;
+}
+
+.seed-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-shrink: 0;
+}
+
+.random-button {
+    height: 48px;
+}
+
+.generate-box {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.generate {
+    width: 80%;
+    height: 64px;
+    color: rgb(var(--mdui-color-on-primary-dark));
+    background-color: rgb(var(--mdui-color-primary-dark));
+    font-weight: 900;
+    font-size: 22px;
+}
+
+/* Music Player */
+.music-player {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0px 8px;
+    margin: 0 16px 8px 16px;
+}
+
+.progress-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.music-player .progress-bar {
+    flex: 1;
+    height: 6px;
+    background: #757575;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.music-player .progress {
+    height: 100%;
+    background: #ffffff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.time-display {
+    font-size: 12px;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Tablet */
+@media (max-width: 767px) {
+    .page {
+        flex-direction: column;
+        padding: 4px;
+        gap: 4px;
+    }
+
+    .side-bar {
+        flex: none;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        margin-bottom: 16px;
+        border-radius: 16px;
+        padding: 16px;
+    }
+
+    .gallery {
+        flex: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        min-height: 60vh;
+        height: auto;
+        padding: 8px;
+        direction: rtl;
+    }
+
+    .music-box {
+        width: 100%;
+        max-width: 500px;
+        margin: 8px;
+        direction: ltr;
+    }
+
+    .side-bar button,
+    .button-container button {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .page {
+        padding: 4px;
+        gap: 4px;
+    }
+    
+    .side-bar {
+        padding: 12px 16px 16px 16px;
+    }
+    
+    .gallery {
+        padding: 8px;
+        min-height: 50vh;
+        height: auto;
+        justify-content: center;
+    }
+    
+    .music-box {
+        width: 100%;
+        max-width: none;
+        margin: 8px 0;
+        min-width: 280px;
+        border-radius: 16px;
+        direction: ltr;
+    }
+    
+    .preview {
+        border-radius: 16px;
+        margin-bottom: 4px;
+    }
+    
+    .music-player {
+        padding: 0px 4px;
+        margin: 0 8px 4px 8px;
+        gap: 4px;
+    }
+    
+    .progress-bar {
+        height: 3px;
+    }
+    
+    .time-display {
+        font-size: 9px;
+        min-width: 40px;
+    }
+    
+    .button-container {
+        gap: 4px;
+        margin-bottom: 8px;
+    }
+    
+    .downloadButton,
+    .deleteButton {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-height: 40px; /* bigger tap area */
+        min-width: 48px;
+    }
+    
+    .header {
+        font-size: clamp(20px, 8vw, 28px) !important;
+        margin: 8px 0 12px 0;
+    }
+    
+    .generate {
+        font-size: 16px;
+        height: 48px;
+        width: 90%;
+    }
+    
+    .duration-box,
+    .seed-box {
+        margin-bottom: 15px;
+    }
+    
+    .random-button {
+        height: 40px;
+        font-size: 12px;
+    }
+    
+    h4 {
+        font-size: 14px;
+    }
 }
