@@ -26,3 +26,7 @@ frontend/node_modules/
 
 # Ignore the generated musics in the backend
 backend/musics/
+
+# Ignore the history
+history/
+history.zip
