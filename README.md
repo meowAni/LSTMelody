@@ -57,6 +57,8 @@ The project requires a few non source-code files to run that are too large to be
   
   [Download FluidR3_GM.sf2](https://drive.google.com/file/d/1f0OfVrfhGyjWwVl_nS1mucT59QjX8fRy/view?usp=sharing)
 
+- Files shared between training/ and backend/ were removed from training/ to avoid duplication.
+
 ## 📈 Training Results
 
 - As the model is an LSTM-based architecture trained on only 1000 songs, it struggles to capture intricate musical patterns effectively. This limitation leads to the performance plateauing in some aspects even after extended training.
