@@ -1,0 +1,30 @@
+.gallery::-webkit-scrollbar {
+  width: 8px;
+}
+.gallery::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.gallery::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+.gallery::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.gallery {
+  flex: 1 1 60%;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(var(--mdui-color-surface-container-lowest-dark));
+  background-image: radial-gradient(rgba(var(--mdui-color-surface-container-low-dark)) 2px, transparent 2px);
+  background-size: 15px 15px;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+  border-radius: 24px;
+}

@@ -3,13 +3,17 @@
   border-radius: 40px;
   border: 0;
   margin: 12px;
+  flex-grow: 1;
+  max-width: 500px;
   background-color: rgba(var(--mdui-color-surface-container-dark))
 }
 
 .preview {
+  height: 180px;
   width: 100%;
   border-radius: 40px;
   margin-bottom: 8px;
+  background-size: 100% 100%;
 }
 
 .progress-bar {

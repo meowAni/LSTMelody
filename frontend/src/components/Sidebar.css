@@ -2,10 +2,135 @@
   text-align: center;
   font-family: "Limelight", sans-serif;
   font-weight: 400;
-  font-size: 50px !important;
+  font-size: 40px !important;
 }
 
-h4, h5 {
+.subheading {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  gap: 6px;
+  margin: 20px 0px 20px 0px;
+}
+
+.subheading span {
+  font-weight: 600;
+}
+
+.duration-slider {
+  margin: 20px 0px 20px 0px;
+}
+
+.seed-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.random-button {
+  height: 48px;
+}
+
+.instrument-name {
+  font-weight: 500;
+  color: rgb(var(--mdui-color-on-surface-dark));
+}
+
+.instrument-box {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 16px 0;
+}
+
+.instrument-stepper {
   display: flex;
   align-items: center;
+  padding: 0px 0px 0px 20px;
+  justify-content: space-between;
+  font-size: 16px;
+  margin: 0px;
+  height: 40px;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  color: black;
+  justify-content: space-between;
+  height: 30px;
+  width: fit-content;
+}
+
+.stepper-data {
+  font-size: 16px;
+  font-weight: 800;
+  color: rgb(var(--mdui-color-secondary-dark));
+  background-color: rgb(var(--mdui-color-on-secondary-dark));
+  width: 30px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepper-increment, .stepper-decrement {
+  min-width: 0px !important;
+  height: 100%;
+  width: 30px;
+}
+
+.stepper-increment {
+  border-radius: 15px 0px 0px 15px;
+}
+
+.stepper-decrement {
+  border-radius: 0px 15px 15px 0px;
+}
+
+.instrument-box-reset {
+  text-align: center;
+  margin: 5px 0px 10px 0px;
+}
+
+.instrument-box-reset mdui-button {
+  height: 40px;
+}
+
+.divider-for-generate {
+  margin: 0px 0px 20px 0px;
+}
+
+.generate-box {
+  text-align: center;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 32px;
+}
+
+.generate {
+  width: 80%;
+  height: 64px;
+  color: rgb(var(--mdui-color-on-primary-dark));
+  background-color: rgb(var(--mdui-color-primary-dark));
+  font-weight: 900;
+  font-size: 22px;
+}
+
+.side-bar {
+  padding: 0px 24px 0px 24px;
+  background-color: rgba(var(--mdui-color-surface-container-low-dark), 1);
+  border-radius: 24px;
+  display: flex;
+  flex: 1 1 40px;
+  flex-direction: column;
+}
+
+@media (max-width: 1700px) {
+  .instrument-stepper {
+    width: 100%;
+  }
 }

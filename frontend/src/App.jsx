@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import 'mdui/mdui.css';
-import MusicComponent from './components/MusicComponent';
+import axios from "axios";
 import Sidebar from './components/Sidebar';
+import Gallery from './components/Gallery';
 import 'mdui/components/button.js';
 import 'mdui/components/icon.js';
 import './styles.css';
@@ -12,21 +13,44 @@ function App() {
   const [duration, setDuration] = useState(100);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [instrumentDrums, setInstrumentDrums] = useState(0);
-  const [instrumentBass, setInstrumentBass] = useState(0);
-  const [instrumentChords, setInstrumentChords] = useState(0);
-  const [instrumentLead, setInstrumentLead] = useState(0);
+  const [instrumentDrums, setInstrumentDrums] = useState(1);
+  const [instrumentBass, setInstrumentBass] = useState(1);
+  const [instrumentChords, setInstrumentChords] = useState(1);
+  const [instrumentLead, setInstrumentLead] = useState(1);
 
   const createMusic = async () => {
+  try {
+    if (isLoading) return;
     setIsLoading(true);
-    const res = await fetch(`http://localhost:8000/create`, { 
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ seed, duration }),
-    });
-    const data = await res.json();
-    setMusicList((prev) => [...prev, data]);
-    setIsLoading(false);
+
+    const res = await axios.post(
+      "http://localhost:8000/create",
+      {
+        seed,
+        duration,
+        instrumentDrums,
+        instrumentBass,
+        instrumentChords,
+        instrumentLead,
+      },
+      {
+        timeout: 120000,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    setMusicList((prev) => [...prev, res.data]);
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.error("Request was canceled:", error.message);
+      } else if (error.code === "ECONNABORTED") {
+        console.error("Request timed out!");
+      } else {
+        console.error("Request failed:", error);
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const deleteMusic = async (id) => {
@@ -37,18 +61,7 @@ function App() {
   return (
     <div className="page">
       <Sidebar createMusic={createMusic} seed={seed} setSeed={setSeed} duration={duration} setDuration={setDuration} instrumentDrums={instrumentDrums} setInstrumentDrums={setInstrumentDrums} instrumentBass={instrumentBass} setInstrumentBass={setInstrumentBass} instrumentChords={instrumentChords} setInstrumentChords={setInstrumentChords} instrumentLead={instrumentLead} setInstrumentLead={setInstrumentLead} isLoading={isLoading}/>
-      <div className="gallery">
-        {musicList.map((music) => (
-          <MusicComponent
-            key={music.id}
-            id={music.id}
-            img={music.img}
-            mid={music.mid}
-            wav={music.wav}
-            onDelete={deleteMusic}
-          />
-        ))}
-      </div>
+      <Gallery musicList={musicList} deleteMusic={deleteMusic}/>
     </div>
   )
 }
