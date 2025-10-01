@@ -16,33 +16,36 @@
 
 - **Music Gallery:** Generated music can be played back using integrated controls, downloaded as MIDI or WAV, and deleted directly from the gallery.
 
-## Screenshots
+## 📸 Screenshots
 
-Desktop view:
-![Desktop](examples/screenshots/desktop.png)
+- **Desktop view**:
+<img src="examples/screenshots/desktop.png" width="100%" />
 
-Mobile view:
-![Mobile 1](examples/screenshots/mobile1.png)
-![Mobile 2](examples/screenshots/mobile2.png)
+- **Mobile view**:
+<p float="left">
+  <img src="examples/screenshots/mobile1.png" width="40%" style="margin-right:5%;" />
+  <img src="examples/screenshots/mobile2.png" width="40%" />
+</p>
 
-## Music
+
+## 🔊 Music
 Few sample generated tracks
 
-- Music 1 | drum = 1, bass = 4, chords = 1, lead = 2
+- **Music 1** (drum = 1, bass = 4, chords = 1, lead = 2)
 <audio controls>
-  <source src="examples/music/music1-drum1-bass4-chords1-lead2.mp3" type="audio/mp3">
+  <source src="https://raw.githubusercontent.com/meowAni/LSTMelody/main/examples/music/music1-drum1-bass4-chords1-lead2.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
 
-- Music 2 | drum = 1, bass = 5, chords = 1, lead = 0
+- **Music 2** (drum = 1, bass = 5, chords = 1, lead = 0)
 <audio controls>
-  <source src="examples/music/music2-drum1-bass5-chords1-lead0.mp3" type="audio/mp3">
+  <source src="https://raw.githubusercontent.com/meowAni/LSTMelody/main/examples/music/music2-drum1-bass5-chords1-lead0.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
 
-- Music 3 | drum = 1, bass = 3, chords = 1, lead = 3
+- **Music 3** (drum = 1, bass = 3, chords = 1, lead = 3)
 <audio controls>
-  <source src="examples/music/music3-drum1-bass3-chords1-lead3.mp3" type="audio/mp3">
+  <source src="https://raw.githubusercontent.com/meowAni/LSTMelody/main/examples/music/music3-drum1-bass3-chords1-lead3.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
 
