@@ -23,33 +23,48 @@
 
 - **Mobile view**:
 <p float="left">
-  <img src="examples/screenshots/mobile1.png" width="40%" style="margin-right:5%;" />
-  <img src="examples/screenshots/mobile2.png" width="40%" />
+  <img src="examples/screenshots/mobile1.png" width="25%" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="examples/screenshots/mobile2.png" width="25%" />
 </p>
-
 
 ## 🔊 Music
 Few sample generated tracks
 
-- **Music 1** (drum = 1, bass = 4, chords = 1, lead = 2)
-<audio controls>
-  <source src="https://raw.githubusercontent.com/meowAni/LSTMelody/main/examples/music/music1-drum1-bass4-chords1-lead2.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
+https://github.com/user-attachments/assets/d51d8afa-bb7e-487d-b436-d43cba4bbcb0
 
-- **Music 2** (drum = 1, bass = 5, chords = 1, lead = 0)
-<audio controls>
-  <source src="https://raw.githubusercontent.com/meowAni/LSTMelody/main/examples/music/music2-drum1-bass5-chords1-lead0.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
+https://github.com/user-attachments/assets/7e5462cf-5e2e-4355-957d-3d420eab2e0b
 
-- **Music 3** (drum = 1, bass = 3, chords = 1, lead = 3)
-<audio controls>
-  <source src="https://raw.githubusercontent.com/meowAni/LSTMelody/main/examples/music/music3-drum1-bass3-chords1-lead3.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
+https://github.com/user-attachments/assets/ec385142-1e17-45a5-a045-9c7e4dcac7b5
+
+## 📦 Required Artifacts
+
+The project requires a few non source-code files to run that are too large to be hosted on GitHub. Download and place them in mentioned locations with the correct filenames.
+
+- backend/weights.pth : Trained model weights.
+  
+  [Download LSTMelody_weights_v1.pth](https://drive.google.com/file/d/1iXFIbDTBlce62j_zeBkgCZTbHRMlBhWT/view?usp=sharing)
+
+- backend/meta.pth : Metadata containing normalization coefficients.
+  
+  [Download LSTMelody_meta_v1.pth](https://drive.google.com/file/d/1XMLCD9nvilFmZmarBjttomkCjpXN2Jev/view?usp=sharing)
+
+- backend/seeds.pth : File containing 10 starting sequences for song generation.
+  
+  [Download LSTMelody_seeds_v1.pth](https://drive.google.com/file/d/1vngYYrSZdu4aqQ33Ikp7iV9evZ9pnDwn/view?usp=sharing)
+
+- backend/FluidR3_GM.sf2 : Soundfont used by FluidSynth for rendering MIDI files to WAV.
+  
+  [Download FluidR3_GM.sf2](https://drive.google.com/file/d/1f0OfVrfhGyjWwVl_nS1mucT59QjX8fRy/view?usp=sharing)
+
+## 📈 Training Results
+
+- As the model is an LSTM-based architecture trained on only 1000 songs, it struggles to capture intricate musical patterns effectively. This limitation leads to the performance plateauing in some aspects even after extended training.
+- It was trained on a Mobile Nvidia RTX 3060 for approximately 8 hours.
+
+<img src="examples/screenshots/training_loss.jpeg" width="100%" />
 
 ## 👥 Contributors
 
-- [Anirudh Vignesh](https://github.com/crystallyen)
+- [Anirudh Vignesh](https://github.com/meowAni)
 - [Divyesh Dileep](https://github.com/Divyesh48960)

@@ -1,0 +1,14 @@
+fastapi==0.115.11
+uvicorn==0.34.0
+starlette==0.46.1
+torch==2.5.1
+midi2audio==0.1.1
+soundfile==0.13.1
+numpy @ file:///C:/b/abs_25aj347ekn/croot/numpy_and_numpy_base_1730835595898/work/dist/numpy-2.1.3-cp312-cp312-win_amd64.whl#sha256=5f408b6e106c40ee55858263d31f6a5157dd9891bf4fd58f07e85a023b993a31
+pillow @ file:///C:/b/abs_56j2irkr90/croot/pillow_1734430606717/work
+pretty_midi==0.2.10
+tensorboard==2.18.0
+tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1732497199771/work
+scipy==1.15.1
+mido==1.3.3
+librosa==0.11.0

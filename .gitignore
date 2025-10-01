@@ -3,17 +3,26 @@ __pycache__/
 .ipynb_checkpoints/
 backend/__pycache__
 
-# Ignore the large MIDI datasets and preprocessed data
-ai-pipeline/data/
+# Ignore the large MIDI datasets
+training/data/raw
 
 # Ignore the directory containing generated music
-ai-pipeline/generated/
+training/generated/
 
 # Ignore the trained model weights
-ai-pipeline/model_weights.pth
+backend/weights.pth
 
 # Ignore the seed starting sequences
-ai-pipeline/seeds.pth
+backend/seeds.pth
+
+# Ignore the large metadata file
+backend/meta.pth
+
+# Ignore the soundfont file
+backend/FluidR3_GM.sf2
 
 # Ignore the frontend boilerplate and build specific code
 frontend/node_modules/
+
+# Ignore the generated musics in the backend
+backend/musics/
