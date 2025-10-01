@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from uuid import uuid4
 from os import path, makedirs
 from createMusic import postprocess
+from starlette.concurrency import run_in_threadpool
 import shutil
 
 base_dir = path.abspath("musics")
@@ -22,16 +23,27 @@ api.add_middleware(
 class MusicRequest(BaseModel):
     seed: int
     duration: int
+    instrumentDrums: int
+    instrumentBass: int
+    instrumentChords: int
+    instrumentLead: int
+
 
 @api.post("/create")
-def create_music(data: MusicRequest):
+async def create_music(data: MusicRequest):
     seed_value = data.seed
     duration_value = data.duration
-    print(f"Recieved create request with seed {seed_value} and duration {duration_value}")
+    instrument_drums = data.instrumentDrums
+    instrument_bass = data.instrumentBass
+    instrument_chords = data.instrumentChords
+    instrument_lead = data.instrumentLead
     music_id = str(uuid4())
+    print(f"[{music_id}] Request with seed = {seed_value}, duration = {duration_value}, drums = {instrument_drums}, bass = {instrument_bass}, chords = {instrument_chords}, lead = {instrument_lead}")
     music_path = path.join(base_dir, music_id)
     makedirs(music_path, exist_ok=True)
-    postprocess(seed_value, duration_value, music_path)
+    await run_in_threadpool(
+        postprocess, music_id, seed_value, duration_value, instrument_drums, instrument_bass, instrument_chords, instrument_lead, music_path
+    )
     return {
         "id": music_id,
         "img": f"http://localhost:8000/musics/{music_id}/preview.png",
